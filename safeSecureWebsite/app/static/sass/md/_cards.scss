@@ -215,11 +215,15 @@
         @include shadow-big-color($brand-success);
     }
 
+    [data-background-color="yellow"]{
+        background: linear-gradient(60deg, $yellow-400, $yellow-600);
+        @include shadow-big-color($brand-warning);
+    }
+
     [data-background-color="orange"]{
         background: linear-gradient(60deg, $orange-400, $orange-600);
         @include shadow-big-color($brand-warning);
     }
-
     [data-background-color="red"]{
         background: linear-gradient(60deg, $red-400, $red-600);
         @include shadow-big-color($brand-danger);
