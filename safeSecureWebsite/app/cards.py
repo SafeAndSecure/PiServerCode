@@ -1,5 +1,5 @@
 def generateCards():
-    cards = [houseStatus("Not Safe"), beerBuddy(), shoppingList(), makePhoneCall(), weather(), "6"]  #[houseStatus("Not Safe"), makePhoneCall(), beerBuddy(), shoppingList()]
+    cards = [houseStatus("Not Safe"), shoppingList(), makePhoneCall(), weather(), "6"]  #[houseStatus("Not Safe"), makePhoneCall(), beerBuddy(), shoppingList()]
     print("Length of cards ", len(cards))
     return cards
 

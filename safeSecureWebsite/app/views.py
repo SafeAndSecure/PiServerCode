@@ -7,9 +7,14 @@ import pyttsx3
 from threading import Thread
 
 def say(i):
-    Master.query()
+    #Master.query()
     engine = pyttsx3.init()
-    engine.say(i)
+    voices = engine.getProperty('voices')
+    for voice in voices:
+        #voiceDict.append(voice.name, voice.id)
+        engine.setProperty('voice', voice.id)
+        engine.say(i)
+        print(voice.id)
     engine.runAndWait()
 
 @app.route('/')
@@ -23,15 +28,14 @@ def index():
                            content=generateContent(),
                            card2=cards.houseStatus("Not Safe"),
                            card3=cards.makePhoneCall(),
-                           card4=cards.beerBuddy(),
                            active="dashboard"
                            )
-
 
 @app.route('/base')
 def base():
     return render_template("base.html",
-                           title='Home'
+                           title='Home',
+                           active="dashboard"
                            )
 
 
@@ -40,7 +44,8 @@ def rooms():
     t = Thread(target=say, args=('Security View',))
     t.start()
     return render_template("rooms.html",
-                           title='Security'
+                           title='Security',
+                           active="dashboard"
                            )
 
 @app.route('/security')
@@ -51,10 +56,10 @@ def security():
 
 @app.route('/getData')
 def getData():
-    return "Test";
+    return "";
 
 def generateContent():
-    content = str(Master.data)
+    content = ""
     print(content)
     for row in generateRows(cards.generateCards()):
         content += "<div class=\"row\">"
