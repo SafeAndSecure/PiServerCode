@@ -1,4 +1,4 @@
-def generateCards():
+﻿def generateCards():
     cards = [houseStatus("Check Fridge Door", "Fridge Door Open"),
              houseStatus("Check Bedroom Window", "Bedroom Window Open"),
              houseStatus("Check Oven", "Oven Door Left Open"),

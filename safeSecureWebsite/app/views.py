@@ -1,21 +1,19 @@
 from flask import render_template
 from app import app
 from app import cards
+from app import node
 from app import Master
 import pyttsx3
 
 from threading import Thread
-
+bedroom1 = node.node("Bedroom 1", "192.168.0.4", "5004")
 def say(i):
     #Master.query()
     engine = pyttsx3.init()
     voices = engine.getProperty('voices')
-    for voice in voices:
-        #voiceDict.append(voice.name, voice.id)
-        engine.setProperty('voice', voice.id)
-        engine.say(i)
-        print(voice.id)
-    engine.runAndWait()
+    engine.setProperty('voice', voices[7].id)
+    engine.say(i)
+    #engine.runAndWait()
 
 @app.route('/')
 @app.route('/index')
@@ -42,14 +40,15 @@ def rooms():
     t = Thread(target=say, args=('Security View',))
     t.start()
     return render_template("rooms.html",
-                           title='Security',
-                           active="dashboard"
+                           title='Rooms',
+                           active="rooms"
                            )
 
 @app.route('/security')
 def security():
     return render_template("security.html",
-                           title='Security'
+                           title='Security',
+                           active="security"
                            )
 
 @app.route('/getData')
@@ -75,11 +74,11 @@ def generateRows(cardList):
         current += card
         current += "</div>"
         currentCardLength += 1
-        if currentCardLength >= 4:
-            rows.append(current)
-            current = ""
-            currentCardLength = 0
+        #if currentCardLength >= 2:
+        #    rows.append(current)
+        #    current = ""
+        #    currentCardLength = 0
     rows.append(current)
-    #print("Length of rows: ", len(rows))
+    print("Length of rows: ", len(rows))
     #sprint("Rows ", rows)
     return rows
