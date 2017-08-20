@@ -16,6 +16,7 @@ nodeSendArray = bytes([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
 loop_restart = True
 
 
+
 def sendMessage(ip, port, message):
     UDP_IP = ip
     UDP_PORT = port
@@ -36,19 +37,19 @@ def sendMessage(ip, port, message):
         print("Socket Timeout")
         return
 
-    characterOrdArray = [64]
+    characterOrdArray = []
     if data != '':
         for character in str(data):
             characterOrdArray.append((ord(character)))
         print(characterOrdArray)
         # print(data)
-        return (data)
+        return (characterOrdArray)
 
 
 def sendMessage(i):
     UDP_IP = nodeIP[i]
     UDP_PORT = nodePort[i]
-    MESSAGE = b'Node_1'
+    MESSAGE = b'Node_123'
     print("UDP target IP:", UDP_IP)
     print("UDP target port:", UDP_PORT)
     print("message:", MESSAGE)
@@ -65,13 +66,13 @@ def sendMessage(i):
         print("Socket Timeout")
         return
 
-    characterOrdArray = [64]
+    characterOrdArray = []
     if data != '':
-        for character in str(data):
-            characterOrdArray.append((ord(character)))
+        for byte in data:
+            characterOrdArray.append(byte)
         print(characterOrdArray)
-        # print(data)
-        return (data)
+        print(data)
+        return (characterOrdArray)
 def bitCompare(byte, bit):
     comp = 2**bit
     if(byte & int(comp, 2) != 0):
@@ -80,3 +81,6 @@ def bitCompare(byte, bit):
 def bitSet(byte, bit, data):
     data = 2**bit * data
     byte & int(data, 2)
+
+while (1):
+    sendMessage(1)

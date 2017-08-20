@@ -1,5 +1,5 @@
 def generateCards():
-    cards = [houseStatus("Not Safe"), shoppingList(), makePhoneCall(), weather(), "6"]  #[houseStatus("Not Safe"), makePhoneCall(), beerBuddy(), shoppingList()]
+    cards = [houseStatus("Not Safe"), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), shoppingList(), makePhoneCall(), weather()]  #[houseStatus("Not Safe"), makePhoneCall(), beerBuddy(), shoppingList()]
     print("Length of cards ", len(cards))
     return cards
 
@@ -35,9 +35,6 @@ def houseStatus(status):
             <h3 class="title">""" + status + """</h3>
         </div>
         <div class="card-footer">
-            <div class="stats">
-                <i class="material-icons text-danger">warning</i> <a href="#pablo">Fridge door open</a>
-            </div>
         </div>
     </div> """
 
