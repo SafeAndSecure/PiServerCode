@@ -26,8 +26,6 @@ def index():
     return render_template("index.html",
                            title='Home',
                            content=generateContent(),
-                           card2=cards.houseStatus("Not Safe"),
-                           card3=cards.makePhoneCall(),
                            active="dashboard"
                            )
 
