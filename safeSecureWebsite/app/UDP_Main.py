@@ -16,6 +16,35 @@ nodeSendArray = bytes([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
 loop_restart = True
 
 
+def sendMessage(ip, port, message):
+    UDP_IP = ip
+    UDP_PORT = port
+    MESSAGE = message
+    print("UDP target IP:", UDP_IP)
+    print("UDP target port:", UDP_PORT)
+    print("message:", MESSAGE)
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
+    try:
+        sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))
+    except socket.error:
+        print("Socket Error")
+        return
+    sock.settimeout(0.5)
+    try:
+        data, addr = sock.recvfrom(64)  # Recieved Packets Size Of 64 Bytes
+    except socket.timeout:
+        print("Socket Timeout")
+        return
+
+    characterOrdArray = [64]
+    if data != '':
+        for character in str(data):
+            characterOrdArray.append((ord(character)))
+        print(characterOrdArray)
+        # print(data)
+        return (data)
+
+
 def sendMessage(i):
     UDP_IP = nodeIP[i]
     UDP_PORT = nodePort[i]
@@ -43,5 +72,11 @@ def sendMessage(i):
         print(characterOrdArray)
         # print(data)
         return (data)
-
-
+def bitCompare(byte, bit):
+    comp = 2**bit
+    if(byte & int(comp, 2) != 0):
+        return 1
+    return 0
+def bitSet(byte, bit, data):
+    data = 2**bit * data
+    byte & int(data, 2)

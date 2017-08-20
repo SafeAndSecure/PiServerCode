@@ -54,9 +54,72 @@
 </div>
 {% endblock %}
 {% block content %}
+            <style>
+                .room {
+                    fill: white;
+                    Stroke: black;
+                }
+                .whiteline {
+                    stroke:white
+                }
+                svg {
+                    width: 500px;
+                    height: auto;
+                }
+                #bed1 {
+                    fill: red;
+                }
+                #kitchen {
+                    fill: cyan;
+                }
+            </style>
             <div class="content">
-                <div class="container-fluid">
-                    {{content|safe}}
+                <div class="container">
+                    <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <svg viewBox="0, 40, 400, 400">
+                            <rect id="porch" class="room" x="130" y="210" width="60" height="30">
+                            </rect>
+
+                            <rect id="kitchen" class="room" x="130" y="160" width="45" height="50">
+                            </rect>
+
+                            <rect id="laundry" class="room" x="175" y="160" width="15" height="50">
+                            </rect>
+
+                            <rect id="bed2" class="room" x="130" y="110" width="60" height="50">
+                            </rect>
+
+                            <rect id="bathroom" class="room" x="150" y="50" width="40" height="60">
+                            </rect>
+
+                            <rect id="storage" class="room" x="100" y="50" width="50" height="15">
+                            </rect>
+
+                            <rect id="bed1" class="room" x="35" y="50" width="65" height="90">
+                            </rect>
+
+                            <rect id="living" class="room" x="60" y="140" width="70" height="100">
+                            </rect>
+
+                            <rect id="balcony" class="room" x="30" y="140" width="30" height="40">
+                            </rect>
+
+
+                            <line id="livingwhiteline" class="whiteline" x1="100.5" y1="140" x2="129.5" y2="140" ></line>
+
+                            <line id="kitchenwhiteline" class="whiteline" x1="130" y1="175.5" x2="130" y2="194.5" ></line>
+
+                            <line id="laundrywhiteline" class="whiteline" x1="175" y1="175.5" x2="175" y2="194.5" ></line>
+
+                        </svg>
+
+                        {{content|safe}}
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                    </div>
+                        </div>
                 </div>
+
             </div>
 {% endblock %}
