@@ -1,6 +1,6 @@
 ﻿def generateCards():
     cards = [houseStatus("Check Fridge Door", "Fridge Door Open"),
-             houseStatus("Check Bedroom Window", "Bedroom Window Open"),
+             houseStatus("Check Bedroom", "Bedroom Window Open"),
              houseStatus("Check Oven", "Oven Door Left Open"),
              medicationAlert("Take Medication"),
              shoppingList("Milk", "Bread","Vegemite"),

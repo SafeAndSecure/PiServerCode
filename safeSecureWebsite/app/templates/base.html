@@ -23,6 +23,7 @@
     <script src="{{ url_for('static', filename='js/responsivevoice.js') }}" rel="script"></script>
     <script src="{{ url_for('static', filename='js/AJAX.js') }}" rel="script"></script>
     <script src="{{ url_for('static', filename='js/arduinoComms.js') }}" rel="script"></script>
+    <script src="{{ url_for('static', filename='js/roomEvents.js') }}" rel="script"></script>
 
     <!-- Angular CDN Imports -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
@@ -33,7 +34,7 @@
 <script>
     document.addEventListener("DOMContentLoaded", function setActive() {
         var active = document.getElementById("{{active|safe}}");
-        active.className = "active";
+        //active.className = "active";
     });
 </script>
 
