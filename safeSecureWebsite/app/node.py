@@ -49,7 +49,7 @@ class node(object):
             print(data)
             return (characterOrdArray)
 
-    def bitCompare(byte, bit):
+    def bitCompare(int, bit):
         comp = 2 ** bit
         if (byte & int(comp, 2) != 0):
             return 1

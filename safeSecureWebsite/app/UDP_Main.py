@@ -49,7 +49,7 @@ def sendMessage(ip, port, message):
 def sendMessage(i):
     UDP_IP = nodeIP[i]
     UDP_PORT = nodePort[i]
-    MESSAGE = b'Node_123'
+    MESSAGE = b'Node_1FF' + int.to_bytes(255,byteorder='big')
     print("UDP target IP:", UDP_IP)
     print("UDP target port:", UDP_PORT)
     print("message:", MESSAGE)
