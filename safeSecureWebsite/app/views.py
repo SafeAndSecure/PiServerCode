@@ -1,31 +1,16 @@
 from flask import render_template
 from app import app
 from app import cards
-from app import node
-from app import Master
-import pyttsx3
 
 from threading import Thread
-bedroom1 = node.node("Bedroom 1", "192.168.0.4", "5004")
-def say(i):
-    #Master.query()
-    engine = pyttsx3.init()
-    voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[7].id)
-    engine.say(i)
-    #engine.runAndWait()
 
 @app.route('/')
 @app.route('/index')
 def index():
 
-    t = Thread(target=say, args=('Main Page',))
-    t.start()
     return render_template("index.html",
                            title='Home',
                            content=generateContent(),
-                           card2=cards.houseStatus("Not Safe"),
-                           card3=cards.makePhoneCall(),
                            active="dashboard"
                            )
 
@@ -39,8 +24,6 @@ def base():
 
 @app.route('/rooms')
 def rooms():
-    t = Thread(target=say, args=('Security View',))
-    t.start()
     return render_template("rooms.html",
                            title='Rooms',
                            active="rooms"
