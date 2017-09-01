@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Node 1 Diagnostics</title>
+        <script>
+		strDO01 = "";
+		strDO02 = "";
+		strDO03 = "";
+		strDO04 = "";
+		var DO01_State = 0;
+		var DO02_State = 0;
+		var DO03_State = 0;
+		var DO04_State = 0;	
+		function GetArduinoIO()
+		{
+			nocache = "&nocache=" + Math.random() * 1000000;
+			var request = new XMLHttpRequest();
+			request.onreadystatechange = function()
+			{
+				if (this.readyState == 4) {
+					if (this.status == 200) {
+						if (this.responseXML != null) {
+							// XML file received - contains analog values, switch values and LED states
+							var count;
+							// get analog inputs
+							var num_an = this.responseXML.getElementsByTagName('analog01').length;
+								document.getElementsByClassName("analog01").innerHTML =
+									this.responseXML.getElementsByTagName('analog01').childNodes[0].nodeValue;
+							// get switch inputs
+							var num_an = this.responseXML.getElementsByTagName('switch').length;
+							for (count = 0; count < num_an; count++) {
+								document.getElementsByClassName("switches")[count].innerHTML =
+									this.responseXML.getElementsByTagName('switch')[count].childNodes[0].nodeValue;
+							}
+							// LED 1
+							if (this.responseXML.getElementsByTagName('DI01')[0].childNodes[0].nodeValue === "checked") {
+								document.LED_form.LED1.checked = true;
+							}
+							else {
+								document.LED_form.LED1.checked = false;
+							}
+							// LED 2
+							if (this.responseXML.getElementsByTagName('DI02')[1].childNodes[0].nodeValue === "checked") {
+								document.LED_form.LED2.checked = true;
+							}
+							else {
+								document.LED_form.LED2.checked = false;
+							}
+							// LED 3
+							if (this.responseXML.getElementsByTagName('DI03')[2].childNodes[0].nodeValue === "on") {
+								document.getElementById("DI03").innerHTML = "LED 3 is ON (D8)";
+								D03_State = 1;
+							}
+							else {
+								document.getElementById("DI03").innerHTML = "LED 3 is OFF (D8)";
+								D03_State = 0;
+							}
+							// LED 4
+							if (this.responseXML.getElementsByTagName('DI04')[3].childNodes[0].nodeValue === "on") {
+								document.getElementById("DI04").innerHTML = "LED 4 is ON (D9)";
+								D04_State = 1;
+							}
+							else {
+								document.getElementById("DI04").innerHTML = "LED 4 is OFF (D9)";
+								D04_State = 0;
+							}
+						}
+					}
+				}
+			}
+			// send HTTP GET request with LEDs to switch on/off if any
+			request.open("GET", "ajax_inputs" + strDO01 + strDO02 + strDO03 + strDO04 + nocache, true);
+			request.send(null);
+			setTimeout('GetArduinoIO()', 1000);
+			strDO01 = "";
+			strDO02 = "";
+			strDO03 = "";
+			strDO04 = "";
+		}
+		// service LEDs when checkbox checked/unchecked
+		/*function GetCheck()
+		{
+			if (LED_form.LED1.checked) {
+				strLED1 = "&LED1=1";
+			}
+			else {
+				strLED1 = "&LED1=0";
+			}
+			if (LED_form.LED2.checked) {
+				strLED2 = "&LED2=1";
+			}
+			else {
+				strLED2 = "&LED2=0";
+			}
+		}*/
+		function GetButton1()
+		{
+			if (DO01_State === 1) {
+				DO01_State = 0;
+				strDO01 = "&DO01=0";
+			}
+			else {
+				DO01_State = 1;
+				strDO01 = "&DO01=1";
+			}
+		}
+		function GetButton2()
+		{
+			if (DO02_State === 1) {
+				DO02_State = 0;
+				strDO02 = "&DO02=0";
+			}
+			else {
+				DO02_State = 1;
+				strDO02 = "&DO02=1";
+			}
+		}
+		function GetButton3()
+		{
+			if (DO03_State === 1) {
+				DO03_State = 0;
+				strDO03 = "&DO03=0";
+			}
+			else {
+				DO03_State = 1;
+				strDO03 = "&DO03=1";
+			}
+		}
+		function GetButton4()
+		{
+			if (DO04_State === 1) {
+				DO04_State = 0;
+				strDO04 = "&DO04=0";
+			}
+			else {
+				DO04_State = 1;
+				strDO04 = "&DO04=1";
+			}
+		}	
+		
+	</script>
+	<style>
+		.IO_box {
+			float: left;
+			margin: 0 20px 20px 0;
+			border: 1px solid blue;
+			padding: 0 5px 0 5px;
+			width: 120px;
+		}
+		h1 {
+			font-size: 120%;
+			color: blue;
+			margin: 0 0 10px 0;
+		}
+		h2 {
+			font-size: 85%;
+			color: #5734E6;
+			margin: 5px 0 5px 0;
+		}
+		p, form, button {
+			font-size: 80%;
+			color: #252525;
+		}
+		.small_text {
+			font-size: 70%;
+			color: #737373;
+		}
+	</style>
+    </head>
+    <body onload="GetArduinoIO()">
+    <h1>SNS Automation Node 1 Diagnostics</h1>
+    <div class="IO_box">
+	  <h2>Analog Inputs</h2>
+			<p>AI01: <span class="analog01">...</span></p>
+			<p>AI02: <span class="analog02">...</span></p>
+			<p>AI03: <span class="analog03">...</span></p>
+			<p>AI04: <span class="analog04">...</span></p>
+		</div>
+		<div class="IO_box">
+			<h2>Switch Inputs</h2>
+			<p>DI01: <span class="switches">...</span></p>
+			<p>DI02: <span class="switches">...</span></p>
+			<p>DI03: <span class="switches">...</span></p>
+			<p>DI04: <span class="switches">...</span></p>
+			<p>DI05: <span class="switches">...</span></p>
+			<p>DI06: <span class="switches">...</span></p>
+			<p>DI07: <span class="switches">...</span></p>
+			<p>DI08: <span class="switches">...</span></p>
+		</div>
+		<div class="IO_box">
+			<h2>LED Strip 1</h2>
+			<form id="PWM1_Check" name="LED_Strip_1">
+			<button type="button" id="PWM1 = Red" onclick="GetButton1()">Red</button><br /><br />
+			<button type="button" id="PWM1 = Green" onclick="GetButton2()">Green</button><br /><br />
+			<button type="button" id="PWM1 = Blue" onclick="GetButton3()">Blue</button><br /><br />
+			<button type="button" id="PWM1 = White" onclick="GetButton4()">White</button><br /><br />
+			<button type="button" id="PWM1 = Room" onclick="GetButton4()">Room</button><br /><br />
+			<button type="button" id="PWM1 = Orange" onclick="GetButton4()">Orange</button><br /><br />
+			<button type="button" id="PWM1 = Purple" onclick="GetButton4()">Purple</button><br /><br />
+			</form>
+		</div>
+		<div class="IO_box">
+			<h2>LED Strip 2</h2>
+			<form id="PWM2_Check" name="LED_Strip_2">
+			<button type="button" id="PWM2 = Red" onclick="GetButton1()">Red</button><br /><br />
+			<button type="button" id="PWM2 = Green" onclick="GetButton2()">Green</button><br /><br />
+			<button type="button" id="PWM2 = Blue" onclick="GetButton3()">Blue</button><br /><br />
+			<button type="button" id="PWM2 = White" onclick="GetButton4()">White</button><br /><br />
+			<button type="button" id="PWM2 = Room" onclick="GetButton4()">Room</button><br /><br />
+			<button type="button" id="PWM2 = Orange" onclick="GetButton4()">Orange</button><br /><br />
+			<button type="button" id="PWM2 = Purple" onclick="GetButton4()">Purple</button><br /><br />
+			</form>
+		</div>
+	<div class="IO_box">
+			<h2>LEDs Using Buttons</h2>
+			<button type="button" id="DO01" onclick="GetButton1()">DO01 is OFF</button><br /><br />
+			<button type="button" id="DO02" onclick="GetButton2()">DO02 is OFF</button><br /><br />
+			<button type="button" id="DO03" onclick="GetButton3()">DO03 is OFF</button><br /><br />
+			<button type="button" id="DO04" onclick="GetButton4()">DO04 is OFF</button><br /><br />
+		</div>
+    </body>
+</html>
