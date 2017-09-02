@@ -59,7 +59,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="room-animation">
-                            <button class="Bed1PersonEnter-Room" onclick="Bed1PersonEnterRoomFunc(); GetButton1(); responsiveVoice.speak('Toggling Light in Bedroom One');">Bed 1 Light Toggle</button>
+                            <button class="Bed1PersonEnter-Room" onclick="Bed1PersonEnterRoomFunc(); GetButton1('http://192.168.0.98');">Bed 1 Light Toggle</button>
                             <button class="Bed1PersonLeave-Room" onclick="Bed1PersonLeaveRoomFunc()">Bed 1 Off</button>
 
                             <button class="Bed2PersonEnter-Room" onclick="Bed2PersonEnterRoomFunc()">Bed 2 On</button>
@@ -148,17 +148,16 @@
                                 <animate id="Bed1PersonLeaveRoom"
                                          attributeName="class"
                                          begin="indefinite"
-                                         from="st6"
                                          to="st0"
                                          dur="1s"
                                          fill="freeze">></animate>/>
+                                </rect>
                         </g>
                         <g id="Bathroom">
                             <rect x="614.1" y="272.1" class="st0" width="166.5" height="106.5">
                                 <animate id="BathroomPersonEnterRoom"
                                          attributeName="class"
                                          begin="indefinite"
-                                         from="st0"
                                          to="st6"
                                          dur="1s"
                                          repeatCount="1"
@@ -166,17 +165,16 @@
                                 <animate id="BathroomPersonLeaveRoom"
                                          attributeName="class"
                                          begin="indefinite"
-                                         from="st6"
                                          to="st0"
                                          dur="1s"
                                          fill="freeze">></animate>/>
+                            </rect>
                         </g>
                         <g id="Bed2">
                             <rect x="564.6" y="378.6" class="st0" width="216" height="160.5">
                                 <animate id="Bed2PersonEnterRoom"
                                          attributeName="class"
                                          begin="indefinite"
-                                         from="st0"
                                          to="st6"
                                          dur="1s"
                                          repeatCount="1"
@@ -184,17 +182,17 @@
                                 <animate id="Bed2PersonLeaveRoom"
                                          attributeName="class"
                                          begin="indefinite"
-                                         from="st6"
                                          to="st0"
                                          dur="1s"
-                                         fill="freeze">></animate>/>
+                                         fill="freeze">
+                                </animate>
+                            </rect>
                         </g>
                         <g id="Kitchen">
                             <rect x="564.6" y="539.1" class="st7" width="157.5" height="174" visibility="hidden" >
                                 <animate id="KitchenPersonEnterRoom"
                                          attributeName="visibility"
                                          begin="indefinite"
-                                         from="hidden"
                                          to="visible"
                                          dur="1s"
                                          repeatCount="1"
@@ -202,7 +200,6 @@
                                 <animate id="KitchenPersonLeaveRoom"
                                          attributeName="visibility"
                                          begin="indefinite"
-                                         from="visible"
                                          to="hidden"
                                          dur="1s"
                                          fill="freeze">></animate>/>
@@ -214,7 +211,6 @@
                                 <animate id="LaundryPersonEnterRoom"
                                          attributeName="class"
                                          begin="indefinite"
-                                         from="st0"
                                          to="st6"
                                          dur="1s"
                                          repeatCount="1"
@@ -222,7 +218,6 @@
                                 <animate id="LaundryPersonLeaveRoom"
                                          attributeName="class"
                                          begin="indefinite"
-                                         from="st6"
                                          to="st0"
                                          dur="1s"
                                          fill="freeze">></animate>/>
@@ -232,7 +227,6 @@
                                 <animate id="PorchPersonEnterRoom"
                                          attributeName="class"
                                          begin="indefinite"
-                                         from="st0"
                                          to="st6"
                                          dur="1s"
                                          repeatCount="1"
@@ -240,7 +234,6 @@
                                 <animate id="PorchPersonLeaveRoom"
                                          attributeName="class"
                                          begin="indefinite"
-                                         from="st6"
                                          to="st0"
                                          dur="1s"
                                          fill="freeze">></animate>/>
@@ -250,7 +243,6 @@
                                 <animate id="BalconyPersonEnterRoom"
                                          attributeName="class"
                                          begin="indefinite"
-                                         from="st0"
                                          to="st6"
                                          dur="1s"
                                          repeatCount="1"
@@ -258,7 +250,6 @@
                                 <animate id="BalconyPersonLeaveRoom"
                                          attributeName="class"
                                          begin="indefinite"
-                                         from="st6"
                                          to="st0"
                                          dur="1s"
                                          fill="freeze">></animate>/>
@@ -269,7 +260,6 @@
                                 <animate id="Living_RoomPersonEnterRoom"
                                          attributeName="class"
                                          begin="indefinite"
-                                         from="st0"
                                          to="st6"
                                          dur="1s"
                                          repeatCount="1"
@@ -277,7 +267,6 @@
                                 <animate id="Living_RoomPersonLeaveRoom"
                                          attributeName="class"
                                          begin="indefinite"
-                                         from="st6"
                                          to="st0"
                                          dur="1s"
                                          fill="freeze">></animate>/>
@@ -298,7 +287,8 @@
                                      to="st9"
                                      dur="1s"
                                      repeatCount="indefinite"
-                                     fill="freeze"></animate>
+                                     fill="freeze">
+                                 </animate>
                                 <animate id="Front_DoorAlarmOff"
                                      attributeName="class"
                                      begin="indefinite"
@@ -306,7 +296,8 @@
                                      to="st2"
                                      dur="1s"
                                      repeatCount="1"
-                                     fill="freeze"></animate>/>
+                                     fill="freeze">
+                                </animate>/>
                             <line class="st0" x1="564.6" y1="731.4" x2="512.7" y2="731.4" visibility="visible"/>
                             <line class="st1" x1="564.6" y1="732.9" x2="564.6" y2="772.7" visibility="visible"/>
 
@@ -317,7 +308,8 @@
                                      to="visible"
                                      dur="1s"
                                      repeatCount="1"
-                                     fill="freeze"></animate>
+                                     fill="freeze">
+                            </animate>
                             <animate id="Front_DoorClose"
                                      attributeName="class"
                                      begin="indefinite"
@@ -514,175 +506,5 @@
                 </div>
 
             </div>
-    <script>
-    type = ['','info','success','warning','danger'];
-
-
-var nodes = {'Lounge Room':'192.168.0.55', 'Kitchen':'192.168.0.56'};
-
-
-function httpPut(url, data)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "PUT", url, false ); // false for synchronous request
-    xmlHttp.send( data );
-    return xmlHttp.responseText;
-}
-function httpGet(url, data)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", url, false ); // false for synchronous request
-    xmlHttp.send( data );
-    return xmlHttp.responseText;
-}
-
-function nodeStatus(){
-    var output = httpGet("http://192.168.0.177/status",null);
-    console.log(output);
-}
-
-function checkNode(roomID)
-{
-    return GetArduinoIO(nodeIP[room])
-}
-
-strDO01 = "";
-strDO02 = "";
-strDO03 = "";
-strDO04 = "";
-var DO01_State = 0;
-var DO02_State = 0;
-var DO03_State = 0;
-var DO04_State = 0;
-
-function GetArduinoIO()
-{
-    nocache = "&nocache=" + Math.random() * 1000000;
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function()
-    {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-                if (this.responseXML != null) {
-                    // XML file received - contains analog values, switch values and LED states
-                    var count;
-                    // get analog inputs
-                    var num_an = this.responseXML.getElementsByTagName('analog01').length;
-                        document.getElementsByClassName("analog01").innerHTML =
-                            this.responseXML.getElementsByTagName('analog01').childNodes[0].nodeValue;
-                    // get switch inputs
-                    var num_an = this.responseXML.getElementsByTagName('switch').length;
-                    for (count = 0; count < num_an; count++) {
-                        document.getElementsByClassName("switches")[count].innerHTML =
-                            this.responseXML.getElementsByTagName('switch')[count].childNodes[0].nodeValue;
-                    }
-                    // LED 1
-                    if (this.responseXML.getElementsByTagName('DI01')[0].childNodes[0].nodeValue === "checked") {
-                        document.LED_form.LED1.checked = true;
-                    }
-                    else {
-                        document.LED_form.LED1.checked = false;
-                    }
-                    // LED 2
-                    if (this.responseXML.getElementsByTagName('DI02')[1].childNodes[0].nodeValue === "checked") {
-                        document.LED_form.LED2.checked = true;
-                    }
-                    else {
-                        document.LED_form.LED2.checked = false;
-                    }
-                    // LED 3
-                    if (this.responseXML.getElementsByTagName('DI03')[2].childNodes[0].nodeValue === "on") {
-                        document.getElementById("DI03").innerHTML = "LED 3 is ON (D8)";
-                        D03_State = 1;
-                    }
-                    else {
-                        document.getElementById("DI03").innerHTML = "LED 3 is OFF (D8)";
-                        D03_State = 0;
-                    }
-                    // LED 4
-                    if (this.responseXML.getElementsByTagName('DI04')[3].childNodes[0].nodeValue === "on") {
-                        document.getElementById("DI04").innerHTML = "LED 4 is ON (D9)";
-                        D04_State = 1;
-                    }
-                    else {
-                        document.getElementById("DI04").innerHTML = "LED 4 is OFF (D9)";
-                        D04_State = 0;
-                    }
-                }
-            }
-        }
-    }
-    // send HTTP GET request with LEDs to switch on/off if any
-    request.open("GET", "http://192.168.10.20/ajax_inputs" + strDO01 + strDO02 + strDO03 + strDO04 + nocache, true);
-    request.send(null);
-    setTimeout('GetArduinoIO()', 1000);
-    strDO01 = "";
-    strDO02 = "";
-    strDO03 = "";
-    strDO04 = "";
-}
-// service LEDs when checkbox checked/unchecked
-/*function GetCheck()
-{
-    if (LED_form.LED1.checked) {
-        strLED1 = "&LED1=1";
-    }
-    else {
-        strLED1 = "&LED1=0";
-    }
-    if (LED_form.LED2.checked) {
-        strLED2 = "&LED2=1";
-    }
-    else {
-        strLED2 = "&LED2=0";
-    }
-}*/
-function GetButton1()
-{
-    if (DO01_State === 1) {
-        DO01_State = 0;
-        strDO01 = "&DO01=0";
-    }
-    else {
-        DO01_State = 1;
-        strDO01 = "&DO01=1";
-    }
-    GetArduinoIO();
-}
-function GetButton2()
-{
-    if (DO02_State === 1) {
-        DO02_State = 0;
-        strDO02 = "&DO02=0";
-    }
-    else {
-        DO02_State = 1;
-        strDO02 = "&DO02=1";
-    }
-}
-function GetButton3()
-{
-    if (DO03_State === 1) {
-        DO03_State = 0;
-        strDO03 = "&DO03=0";
-    }
-    else {
-        DO03_State = 1;
-        strDO03 = "&DO03=1";
-    }
-}
-function GetButton4()
-{
-    if (DO04_State === 1) {
-        DO04_State = 0;
-        strDO04 = "&DO04=0";
-    }
-    else {
-        DO04_State = 1;
-        strDO04 = "&DO04=1";
-    }
-}
-
-    </script>
 
 {% endblock %}

@@ -1,29 +1,7 @@
-type = ['','info','success','warning','danger'];
+   type = ['','info','success','warning','danger'];
 
 
 var nodes = {'Lounge Room':'192.168.0.55', 'Kitchen':'192.168.0.56'};
-
-
-function httpPut(url, data)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "PUT", url, false ); // false for synchronous request
-    xmlHttp.send( data );
-    return xmlHttp.responseText;
-}
-function httpGet(url, data)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", url, false ); // false for synchronous request
-    xmlHttp.send( data );
-    return xmlHttp.responseText;
-}
-
-function nodeStatus(){
-    var output = httpGet("http://192.168.0.177/status",null);
-    console.log(output);
-}
-
 function checkNode(roomID)
 {
     return GetArduinoIO(nodeIP[room])
@@ -38,8 +16,9 @@ var DO02_State = 0;
 var DO03_State = 0;
 var DO04_State = 0;
 
-function GetArduinoIO()
+function GetArduinoIO(ip)
 {
+    var ip = 'http://192.168.0.98';
     nocache = "&nocache=" + Math.random() * 1000000;
     var request = new XMLHttpRequest();
     request.onreadystatechange = function()
@@ -62,9 +41,13 @@ function GetArduinoIO()
                     // LED 1
                     if (this.responseXML.getElementsByTagName('DI01')[0].childNodes[0].nodeValue === "checked") {
                         document.LED_form.LED1.checked = true;
+                        console.log("Enter room DI01");
+                        Bed1PersonEnterRoomFunc();
                     }
                     else {
                         document.LED_form.LED1.checked = false;
+                        console.log("Leave room DI01");
+                        Bed1PersonLeaveRoomFunc();
                     }
                     // LED 2
                     if (this.responseXML.getElementsByTagName('DI02')[1].childNodes[0].nodeValue === "checked") {
@@ -96,7 +79,8 @@ function GetArduinoIO()
         }
     }
     // send HTTP GET request with LEDs to switch on/off if any
-    request.open("GET", "192.168.10.20/ajax_inputs" + strDO01 + strDO02 + strDO03 + strDO04 + nocache, true);
+    console.log(ip);
+    request.open("GET", ip+"/ajax_inputs" + strDO01 + strDO02 + strDO03 + strDO04 + nocache, true);
     request.send(null);
     setTimeout('GetArduinoIO()', 1000);
     strDO01 = "";
@@ -104,32 +88,20 @@ function GetArduinoIO()
     strDO03 = "";
     strDO04 = "";
 }
-// service LEDs when checkbox checked/unchecked
-/*function GetCheck()
-{
-    if (LED_form.LED1.checked) {
-        strLED1 = "&LED1=1";
-    }
-    else {
-        strLED1 = "&LED1=0";
-    }
-    if (LED_form.LED2.checked) {
-        strLED2 = "&LED2=1";
-    }
-    else {
-        strLED2 = "&LED2=0";
-    }
-}*/
-function GetButton1()
+
+function GetButton1(ip)
 {
     if (DO01_State === 1) {
+        responsiveVoice.speak("Turning light off");
         DO01_State = 0;
         strDO01 = "&DO01=0";
     }
     else {
         DO01_State = 1;
+        responsiveVoice.speak("Turning light on");
         strDO01 = "&DO01=1";
     }
+    GetArduinoIO(ip);
 }
 function GetButton2()
 {
