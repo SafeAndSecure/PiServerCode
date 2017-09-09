@@ -59,17 +59,17 @@
                 <div class="container">
                     <div class="row">
                         <div class="room-animation">
-                            <button class="Bed1PersonEnter-Room" onclick="Bed1PersonEnterRoomFunc();Bedroom_1.set_do_state(1,1);">Bed 1 Light On</button>
-                            <button class="Bed1PersonLeave-Room" onclick="Bed1PersonLeaveRoomFunc(); Bedroom_1.set_do_state(1,0);">Bed 1 Off</button>
+                            <button class="Bed1PersonEnter-Room" onclick="Bed1PersonEnterRoomFunc();Bedroom_1.do_state1 = 1;">Bed 1 Light On</button>
+                            <button class="Bed1PersonLeave-Room" onclick="Bed1PersonLeaveRoomFunc();Bedroom_1.do_state1 = 0;">Bed 1 Off</button>
 
-                            <button class="Bed2PersonEnter-Room" onclick="Bedroom_1.set_do_state(2,1);Bed2PersonEnterRoomFunc();">Bed 2 Light On</button>
-                            <button class="Bed2PersonLeave-Room" onclick="Bed2PersonLeaveRoomFunc(); Bedroom_1.set_do_state(2,0);">Bed 2 Off</button>
+                            <button class="Bed2PersonEnter-Room" onclick="Bed2PersonEnterRoomFunc();Bedroom_1.do_state2 = 1;">Bed 2 Light On</button>
+                            <button class="Bed2PersonLeave-Room" onclick="Bed2PersonLeaveRoomFunc();Bedroom_1.do_state2 = 0;">Bed 2 Off</button>
 
-                            <button class="Bed2PersonEnter-Room" onclick="Bedroom_1.set_do_state(3,1);Bed3PersonEnterRoomFunc();">Bed 3 Light On</button>
-                            <button class="Bed2PersonLeave-Room" onclick="Bed3PersonLeaveRoomFunc(); Bedroom_1.set_do_state(3,0);">Bed 3 Off</button>
+                            <button class="Bed2PersonEnter-Room" onclick="BathroomPersonLeaveRoomFunc();Bedroom_1.do_state3 = 1;">Bed 3 Light On</button>
+                            <button class="Bed2PersonLeave-Room" onclick="BathroomPersonLeaveRoomFunc();Bedroom_1.do_state3 = 0;">Bed 3 Off</button>
 
-                            <button class="Bed2PersonEnter-Room" onclick="Bedroom_1.set_do_state(4,1);Bed4PersonEnterRoomFunc();">Bed 4 Light On</button>
-                            <button class="Bed2PersonLeave-Room" onclick="Bed4PersonLeaveRoomFunc(); Bedroom_1.set_do_state(4,0);">Bed 4 Off</button>
+                            <button class="Bed2PersonEnter-Room" onclick="KitchenPersonLeaveRoomFunc();Bedroom_1.do_state2 = 1;">Bed 4 Light On</button>
+                            <button class="Bed2PersonLeave-Room" onclick="KitchenPersonLeaveRoomFunc();Bedroom_1.do_state2 = 0;">Bed 4 Off</button>
 
                             <button class="Bed2PersonEnter-Room" onclick="Bed2PersonEnterRoomFunc()">Bed 2 On</button>
                             <button class="Bed2PersonLeave-Room" onclick="Bed2PersonLeaveRoomFunc()">Bed 2 Off</button>

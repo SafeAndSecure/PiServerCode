@@ -21,6 +21,21 @@ function Bed2PersonLeaveRoomFunc(){
     Bed2PersonLeaveRoom.beginElement();
 }
 
+function Bed3PersonEnterRoomFunc(){
+    Bed1PersonEnterRoom.beginElement();
+}
+function Bed3PersonLeaveRoomFunc(){
+    Bed1PersonLeaveRoom.beginElement();
+}
+
+function Bed4PersonEnterRoomFunc(){
+    Bed1PersonEnterRoom.beginElement();
+}
+function Bed4PersonLeaveRoomFunc(){
+    Bed1PersonLeaveRoom.beginElement();
+}
+
+
 function BathroomPersonEnterRoomFunc(){
     BathroomPersonEnterRoom.beginElement();
 }
