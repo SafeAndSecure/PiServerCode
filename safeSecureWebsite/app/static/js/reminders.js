@@ -11,9 +11,7 @@ function takeMedication() {
 function statusCheck() {
 
     console.log("Check if person is ok");
-    if (lastInput > 1000) {
-        setInterval(takeMedication, 20000);
-    }
+    responsiveVoice.speak("No input detected. Are you ok");
 }
 
 
@@ -25,4 +23,13 @@ window.addEventListener('load', function(){ // on page load
 
 }, false)
 
-requestAnimationFrame
+
+function mainLoop() {
+    if (lastInput > 60*60)
+    {
+        lastInput = 0;
+        statusCheck();
+    }
+    requestAnimationFrame(mainLoop);
+}
+requestAnimationFrame(mainLoop);
