@@ -1,7 +1,7 @@
 ﻿def generateCards():
-    cards = [houseStatus("Check Fridge Door", "Fridge Door Open"),
-             houseStatus("Check Bedroom", "Bedroom Window Open"),
-             houseStatus("Check Oven", "Oven Door Left Open"),
+    cards = [houseStatus("Check Fridge Door", "Fridge Door Open", "fridge"),
+             houseStatus("Check Main Bedroom", "Bedroom Window Open", "bedroom1"),
+             houseStatus("Check Oven", "Oven Door Left Open", "oven"),
              medicationAlert("Take Medication"),
              shoppingList("Milk", "Bread","Vegemite"),
              weather(),
@@ -16,7 +16,7 @@
 def reminderCard(message):
     return """
 
-    <div class="card card-stats">
+    <div id="" + message + "" class="card card-stats">
         <div class="card-header" data-background-color="green">
             <i class="material-icons">alarm</i>
         </div>
@@ -33,9 +33,9 @@ def reminderCard(message):
     </div> """
 
 
-def houseStatus(title, alert):
+def houseStatus(title, alert, id):
     return """
-    <div class="card card-stats">
+    <div id=""" + id + """ class="card card-stats">
         <div class="card-header" data-background-color="red">
             <i class="material-icons">home</i>
         </div>
@@ -52,7 +52,7 @@ def houseStatus(title, alert):
 
 def shoppingList(message1, message2, message3):
     return """
-    <div class="card card-stats">
+    <div id="shoppingList"  class="card card-stats">
         <div class="card-header" data-background-color= "blue">
             <i class="material-icons">shopping_cart</i>
         </div>
@@ -67,7 +67,7 @@ def shoppingList(message1, message2, message3):
 
 def weather():
     return """
-    <div class="card card-stats">
+    <div id="weather"  class="card card-stats">
         <div class="card-header" data-background-color="green">
             <i class="material-icons">brightness_low</i>
         </div>
@@ -101,7 +101,7 @@ def beerBuddy():
 def medicationAlert(message):
     return """
 
-    <div class="card card-stats">
+    <div id="medication" class="card card-stats">
         <div class="card-header" data-background-color="orange">
             <i class="material-icons">priority_high</i>
         </div>
@@ -119,7 +119,7 @@ def medicationAlert(message):
 
 def contact(title, number, icon, address):
     return """
-    <div class="card card-stats">
+    <div id="contact" class="card card-stats">
         <div class="card-header" data-background-color="purple">
             <i class="material-icons">""" + icon + """</i>
         </div>

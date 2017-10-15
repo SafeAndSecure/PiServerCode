@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block navbar %}
+    <script src="{{ url_for('static', filename='js/cards.js') }}" rel="script"></script>
 <div class="container-fluid">
 
 </div>
@@ -8,7 +9,9 @@
 {% block content %}
             <div class="content">
                 <div class="container-fluid">
-                    {{content|safe}}
+                <div id = "cards">
+
+                </div>
                 </div>
             </div>
 {% endblock %}

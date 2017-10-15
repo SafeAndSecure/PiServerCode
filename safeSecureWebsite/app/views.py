@@ -2,15 +2,12 @@ from flask import render_template
 from app import app
 from app import cards
 
-from threading import Thread
-
 @app.route('/')
 @app.route('/index')
 def index():
 
     return render_template("index.html",
                            title='Home',
-                           content=generateContent(),
                            active="dashboard"
                            )
 
@@ -21,12 +18,18 @@ def base():
                            active="dashboard"
                            )
 
-
 @app.route('/rooms')
 def rooms():
     return render_template("rooms.html",
                            title='Rooms',
                            active="rooms"
+                           )
+
+@app.route('/lighting')
+def lighting():
+    return render_template("lighting.html",
+                           title='Lighting',
+                           active="lighting"
                            )
 
 @app.route('/security')
@@ -35,10 +38,6 @@ def security():
                            title='Security',
                            active="security"
                            )
-
-@app.route('/getData')
-def getData():
-    return "";
 
 def generateContent():
     content = ""

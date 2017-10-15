@@ -5,31 +5,39 @@ var lastInput = 0;
 function takeMedication() {
     console.log("Reminder to take medication");
     responsiveVoice.speak("Please Take Your Medication");
-    setInterval(takeMedication, 10000);
+    setInterval(takeMedication, 20000);
 }
 
 function statusCheck() {
 
     console.log("Check if person is ok");
-    responsiveVoice.speak("No input detected. Are you ok");
+    responsiveVoice.speak("No input detected. Are you ok", "UK English Male");
 }
-
 
 window.addEventListener('load', function(){ // on page load
 
-    document.body.addEventListener('touchstart', function(e){
+    document.addEventListener('touchstart', function(e){
         lastInput = 0;
-    }, false)
+    }, false);
+    document.addEventListener('click', function(e){
+        lastInput = 0;
+    }, false);
+    document.addEventListener('mousemove', function(e){
+        lastInput = 0;
+    }, false);
 
 }, false)
 
-
+//takeMedication()
 function mainLoop() {
-    if (lastInput > 60*60)
+    console.log(lastInput);
+
+    if (lastInput > 300)
     {
         lastInput = 0;
         statusCheck();
     }
+    lastInput++;
     requestAnimationFrame(mainLoop);
 }
 requestAnimationFrame(mainLoop);

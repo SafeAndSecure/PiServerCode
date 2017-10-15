@@ -12,83 +12,18 @@
         </button>
         <a class="navbar-brand" href="#">Safe & Secure Automated Systems</a>
     </div>
-
 </div>
 {% endblock %}
 {% block content %}
-
+<script>
+autoLighting = false;
+</script>
             <div class="content">
                 <div class="container">
                     <div class="row">
-                        <div class="room-animation">
-                            <button class="Bed1PersonEnter-Room" onclick="Bed1PersonEnterRoomFunc();Bedroom_1.do_state1 = 1;">Bed 1 Light On</button>
-                            <button class="Bed1PersonLeave-Room" onclick="Bed1PersonLeaveRoomFunc();Bedroom_1.do_state1 = 0;">Bed 1 Off</button>
-
-                            <button class="Bed2PersonEnter-Room" onclick="Bed2PersonEnterRoomFunc();Bedroom_1.do_state2 = 1;">Bed 2 Light On</button>
-                            <button class="Bed2PersonLeave-Room" onclick="Bed2PersonLeaveRoomFunc();Bedroom_1.do_state2 = 0;">Bed 2 Off</button>
-
-                            <button class="Bed2PersonEnter-Room" onclick="BathroomPersonLeaveRoomFunc();Bedroom_1.do_state3 = 1;">Bed 3 Light On</button>
-                            <button class="Bed2PersonLeave-Room" onclick="BathroomPersonLeaveRoomFunc();Bedroom_1.do_state3 = 0;">Bed 3 Off</button>
-
-                            <button class="Bed2PersonEnter-Room" onclick="KitchenPersonLeaveRoomFunc();Bedroom_1.do_state2 = 1;">Bed 4 Light On</button>
-                            <button class="Bed2PersonLeave-Room" onclick="KitchenPersonLeaveRoomFunc();Bedroom_1.do_state2 = 0;">Bed 4 Off</button>
-
-                            <button class="Bed2PersonEnter-Room" onclick="Bed2PersonEnterRoomFunc()">Bed 2 On</button>
-                            <button class="Bed2PersonLeave-Room" onclick="Bed2PersonLeaveRoomFunc()">Bed 2 Off</button>
-
-                            <button class="BathroomPersonEnter-Room" onclick="BathroomPersonEnterRoomFunc()">Bathroom On</button>
-                            <button class="BathroomPersonLeave-Room" onclick="BathroomPersonLeaveRoomFunc()">Bathroom Off</button>
-
-                            <button class="KitchenPersonEnter-Room" onclick="KitchenPersonEnterRoomFunc()">Kitchen On</button>
-                            <button class="KitchenPersonLeave-Room" onclick="KitchenPersonLeaveRoomFunc()">Kitchen Off</button>
-
-                            <button class="LaundryPersonEnter-Room" onclick="LaundryPersonEnterRoomFunc()">Laundry On</button>
-                            <button class="LaundryPersonLeave-Room" onclick="LaundryPersonLeaveRoomFunc()">Laundry Off</button>
-
-                            <button class="BalconyPersonEnter-Room" onclick="BalconyPersonEnterRoomFunc()">Balcony On</button>
-                            <button class="BalconyPersonLeave-Room" onclick="BalconyPersonLeaveRoomFunc()">Balcony Off</button>
-
-                            <button class="PorchPersonEnter-Room" onclick="PorchPersonEnterRoomFunc()">Porch On</button>
-                            <button class="PorchPersonLeave-Room" onclick="PorchPersonLeaveRoomFunc()">Porch Off</button>
-
-                            <button class="Living_RoomPersonEnter-Room" onclick="Living_RoomPersonEnterRoomFunc()">Living Room On</button>
-                            <button class="Living_RoomPersonLeave-Room" onclick="Living_RoomPersonLeaveRoomFunc()">Living Room Off</button>
-
-                            <button class="Front_DoorOpen-Func" onclick="Front_DoorOpenFunc()">Front Door Open</button>
-                            <button class="Front_DoorClose-Func" onclick="Front_DoorCloseFunc()">Front Door Close</button>
-
-                            <button class="Bed1_DoorOpen-Func" onclick="Bed1_DoorOpenFunc()">Bed1 Door Open</button>
-                            <button class="Bed1_DoorClose-Func" onclick="Bed1_DoorCloseFunc()">Bed1 Door Close</button>
-
-                            <button class="Bed2_DoorOpen-Func" onclick="Bed2_DoorOpenFunc()">Bed2 Door Open</button>
-                            <button class="Bed2_DoorClose-Func" onclick="Bed2_DoorCloseFunc()">Bed2 Door Close</button>
-
-                            <button class="Bathroom_DoorOpen-Func" onclick="Bathroom_DoorOpenFunc()">Bathroom Door Open</button>
-                            <button class="Bathroom_DoorClose-Func" onclick="Bathroom_DoorCloseFunc()">Bathroom Door Close</button>
-
-                            <button class="Balcony_DoorOpen-Func" onclick="Balcony_DoorOpenFunc()">Balcony Door Open</button>
-                            <button class="Balcony_DoorClose-Func" onclick="Balcony_DoorCloseFunc()">Balcony Door Close</button>
-
-                            <button class="Bed2_DoorAlarmOn-Func" onclick="Bed2_DoorAlarmOnFunc()">Bed 2 Door Alarm ON</button>
-                            <button class="Bed2_DoorAlarmOff-Func" onclick="Bed2_DoorAlarmOffFunc()">Bed 2 Door Alarm OFF</button>
-
-                            <button class="Bed1_DoorAlarmOn-Func" onclick="Bed1_DoorAlarmOnFunc()">Bed 1 Door Alarm ON</button>
-                            <button class="Bed1_DoorAlarmOff-Func" onclick="Bed1_DoorAlarmOffFunc()">Bed 1 Door Alarm OFF</button>
-
-                            <button class="Bathroom_DoorAlarmOn-Func" onclick="Bathroom_DoorAlarmOnFunc()">Bathroom Door Alarm ON</button>
-                            <button class="Bathroom_DoorAlarmOff-Func" onclick="Bathroom_DoorAlarmOffFunc()">Bathroom Door Alarm OFF</button>
-
-                            <button class="Front_DoorAlarmOn-Func" onclick="Front_DoorAlarmOnFunc()">Front Door Alarm ON</button>
-                            <button class="Front_DoorAlarmOff-Func" onclick="Front_DoorAlarmOffFunc()">Front Door Alarm OFF</button>
-
-                            <button class="Balcony_DoorAlarmOn-Func" onclick="Balcony_DoorAlarmOnFunc()">Balcony Door Alarm ON</button>
-                            <button class="Balcony_DoorAlarmOff-Func" onclick="Balcony_DoorAlarmOffFunc()">Balcony Door Alarm OFF</button>
-
-                        </div>
-
                     <div class="col-lg-6 col-md-6 col-sm-6">
-                        <svg id="floorplan" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	                        viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve">
+                        <svg width="1000" height="1400" id="floorplan" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	                        viewBox="200 340 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve">
                     <style type="text/css">
                         .st0{fill:none;stroke:#000000;stroke-width:2.8346;stroke-miterlimit:10;}
                         .st1{fill:none;stroke:#FFFFFF;stroke-width:2.8346;stroke-miterlimit:10;}
@@ -107,7 +42,7 @@
                                 335.1,791.1 564.6,791.1 564.6,713.1 780.6,713.1 	"/>
                         </g>
                         <g id="Bed1">
-                            <rect x="258.6" y="143.1" class="st0" width="232.5" height="282.9">
+                            <rect x="258.6" y="143.1" class="st0" width="232.5" height="282.9" pointer-events="visible">
                                 <animate id="Bed1PersonEnterRoom"
                                          attributeName="class"
                                          begin="indefinite"
@@ -125,7 +60,7 @@
                                 </rect>
                         </g>
                         <g id="Bathroom">
-                            <rect x="614.1" y="272.1" class="st0" width="166.5" height="106.5">
+                            <rect x="614.1" y="272.1" class="st0" width="166.5" height="106.5" pointer-events="visible">
                                 <animate id="BathroomPersonEnterRoom"
                                          attributeName="class"
                                          begin="indefinite"
@@ -142,7 +77,7 @@
                             </rect>
                         </g>
                         <g id="Bed2">
-                            <rect x="564.6" y="378.6" class="st0" width="216" height="160.5">
+                            <rect x="564.6" y="378.6" class="st0" width="216" height="160.5" pointer-events="visible">
                                 <animate id="Bed2PersonEnterRoom"
                                          attributeName="class"
                                          begin="indefinite"
@@ -160,7 +95,7 @@
                             </rect>
                         </g>
                         <g id="Kitchen">
-                            <rect x="564.6" y="539.1" class="st7" width="157.5" height="174" visibility="hidden" >
+                            <rect x="564.6" y="539.1" class="st7" width="157.5" height="174" visibility="hidden" pointer-events="visible">
                                 <animate id="KitchenPersonEnterRoom"
                                          attributeName="visibility"
                                          begin="indefinite"
@@ -178,7 +113,7 @@
                             <polyline class="st0" points="564.6,680 564.6,713.1 722.1,713.1 722.1,638 	"/>
                         </g>
                         <g id="Laundry">
-                            <polyline class="st0" points="722.1,638 722.1,713.1 780.6,713.1 780.6,539.1 722.1,539.1 722.1,594 	">
+                            <polyline class="st0" points="722.1,638 722.1,713.1 780.6,713.1 780.6,539.1 722.1,539.1 722.1,594" pointer-events="visible">
                                 <animate id="LaundryPersonEnterRoom"
                                          attributeName="class"
                                          begin="indefinite"
@@ -194,7 +129,7 @@
                                          fill="freeze">></animate>/>
                         </g>
                         <g id="Porch">
-                            <rect x="564.6" y="713.1" class="st0" width="216" height="78">
+                            <rect x="564.6" y="713.1" class="st0" width="216" height="78" pointer-events="visible">
                                 <animate id="PorchPersonEnterRoom"
                                          attributeName="class"
                                          begin="indefinite"
@@ -210,7 +145,7 @@
                                          fill="freeze">></animate>/>
                         </g>
                         <g id="Balcony">
-                            <rect x="258.6" y="426" class="st0" width="76.5" height="225.6">
+                            <rect x="258.6" y="426" class="st0" width="76.5" height="225.6" pointer-events="visible">
                                 <animate id="BalconyPersonEnterRoom"
                                          attributeName="class"
                                          begin="indefinite"
@@ -227,7 +162,7 @@
                         </g>
                         <g id="Living_Room">
                             <polyline class="st0" points="564.6,573 564.6,426 564.6,378.6 614.1,378.6 614.1,272.1 491.1,272.1 491.1,366.7 491.1,418.6
-                                491.1,426 335.1,426 335.1,791.1 564.6,791.1 564.6,680 	">
+                                491.1,426 335.1,426 335.1,791.1 564.6,791.1 564.6,680 	" pointer-events="visible">
                                 <animate id="Living_RoomPersonEnterRoom"
                                          attributeName="class"
                                          begin="indefinite"

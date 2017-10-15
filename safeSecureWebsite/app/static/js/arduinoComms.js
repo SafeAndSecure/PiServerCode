@@ -8,14 +8,14 @@ class Node {
         this.do_state = [0, 0, 0, 0];
         this.do_str = ["&DO01=0", "&DO02=0", "&DO03=1", "&DO04=1"];
         this.ai_state = [0, 0, 0, 0];
-        this.pwm1_colour = "";
-        this.pwm2_colour = "";
+        this.pwm1_colour = "Purple";
+        this.pwm2_colour = "Purple";
+        this.pwm3_colour = "Purple";
         this.temperature = 0;
         this.humidity = 0;
         this.url = "";
         console.log(this.roomId);
     }
-
     get do_state1() {
         return this.do_state[0];
     }
@@ -68,6 +68,24 @@ class Node {
     set di_state4(state) {
         this.di_state[3] = state;
     }
+    get pwm01() {
+        return this.pwm1_colour;
+    }
+    set pwm01(colour) {
+        this.pwm1_colour = colour;
+    }
+    get pwm02() {
+        return this.pwm1_colour;
+    }
+    set pwm02(colour) {
+        this.pwm1_colour = colour;
+    }
+    get pwm03() {
+        return this.pwm3_colour;
+    }
+    set pwm03(colour) {
+        this.pwm3_colour = colour;
+    }
     get ai_state1() {
         return this.ai_state[0];
     }
@@ -91,6 +109,42 @@ class Node {
     }
     set ai_state4(state) {
         this.ai_state[3] = state;
+    }
+    toggleDO1() {
+        console.log("Toggling pin 1");
+        if(this.do_state1){
+            this.do_state1 = 0;
+        }
+        else {
+            this.do_state1 = 1;
+        }
+    }
+    toggleDO2() {
+        console.log("Toggling pin 2");
+        if(this.do_state2){
+            this.do_state2 = 0;
+        }
+        else {
+            this.do_state2 = 1;
+        }
+    }
+    toggleDO3(){
+        console.log("Toggling pin 3");
+        if(this.do_state3){
+            this.do_state3 = 0;
+        }
+        else {
+            this.do_state3 = 1;
+        }
+    }
+    toggleDO4(){
+        console.log("Toggling pin 4");
+        if(this.do_state4){
+            this.do_state4 = 0;
+        }
+        else {
+            this.do_state4 = 1;
+        }
     }
     GetArduinoIO() {
         let request = new XMLHttpRequest();
@@ -151,8 +205,8 @@ class Node {
         };
         // send HTTP GET request with LEDs to switch on/off if any
         //this.reflectInputs();
-        this.url = "http://" + this.ip + "/ajax_inputs" + this.do_str[0] + this.do_str[1] + this.do_str[2] + this.do_str[3] + this.pwm1_colour + this.pwm2_colour;
-        //console.log(this.url);
+        this.url = "http://" + this.ip + "/ajax_inputs" + this.do_str[0] + this.do_str[1] + this.do_str[2] + this.do_str[3] + "&PWM01=" + this.pwm1_colour+"=1" + "&PWM02=" + this.pwm2_colour+"=1"+ "&PWM03=" + this.pwm3_colour+"=1";
+        console.log(this.url);
         request.open("GET", this.url, true);
         request.send(null);
     }
@@ -184,70 +238,34 @@ class Node {
     }
 }
 
-
-var Bedroom_1 = new Node("Bedroom_1", "192.168.0.98");
-var Bedroom_2 = new Node("Bedroom_2","192.168.0.99");
+if (typeof autoLighting === 'undefined') {
+    var autoLighting = true;
+}
+var Bedrooms = new Node("Bedrooms", "192.168.0.98");
+var Common_Area = new Node("Common_Area","192.168.0.99");
+var Front_Area = new Node("Front_Area","192.168.0.100");
 var n = 0;
-
+function setup()
+{
+}
 function loop() {
     n++;
-
-    if (n%60 == 0) {
-        //console.log("Loop");
-        Bedroom_1.GetArduinoIO();
-        //Bedroom_1.reflectInputs();
-        Bedroom_2.GetArduinoIO();
-        //Bedroom_2.reflectInputs();
-        if (Bedroom_1.di_state1) {
-            Bed1PersonEnterRoomFunc();
-        }
-        else {
-            Bed1PersonLeaveRoomFunc();
-        }
-        if (Bedroom_1.di_state2) {
-            BathroomPersonEnterRoomFunc();
-        }
-        else {
-            BathroomPersonLeaveRoomFunc();
-        }
-        if (Bedroom_1.di_state3) {
-            KitchenPersonEnterRoomFunc();
-        }
-        else {
-            KitchenPersonLeaveRoomFunc();
-        }
-        if (Bedroom_1.di_state4) {
-            Bed1_DoorOpenFunc();
-        }
-        else {
-            Bed1_DoorCloseFunc();
-        }
-        /*if (Bedroom_2.di_state1) {
-            Bed1PersonEnterRoomFunc();
-        }
-        else {
-            Bed1PersonLeaveRoomFunc();
-        }
-        if (Bedroom_2.di_state1) {
-            Bed1PersonEnterRoomFunc();
-        }
-        else {
-            Bed1PersonLeaveRoomFunc();
-        }
-        if (Bedroom_2.di_state2) {
-            Bed1PersonEnterRoomFunc();
-        }
-        else {
-            Bed1PersonLeaveRoomFunc();
-        }
-        if (Bedroom_2.di_state3) {
-            Bed1PersonEnterRoomFunc();
-        }
-        else {
-            Bed1PersonLeaveRoomFunc();
-        }*/
+    //console.log(n);
+    if (n>60) { // loop is called 60 times a second
+        Bedrooms.GetArduinoIO();
+        BedroomsLoop(autoLighting);
+        //Bedrooms.reflectInputs();
+        Common_Area.GetArduinoIO();
+        CommonAreasLoop(autoLighting);
+        //Common_Area.reflectInputs();
+        Front_Area.GetArduinoIO();
+        //Front_Area.reflectInputs();
+        console.log("Loop");
         n = 0;
-    }
+        }
+
     requestAnimationFrame(loop);
 }
+$(document).ready(function() {setup();});
+
 requestAnimationFrame(loop);

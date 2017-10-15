@@ -2,7 +2,6 @@
  * Created by josh on 7/08/17.
  */
 
-
 var responseString = "";
 
 function requestData() {
@@ -11,7 +10,6 @@ function requestData() {
         if(this.readyState == 4 && this.status == 200) {
             console.log(request.responseText);
             responseString = request.responseText;
-            //alert(responseString);
             return(responseString);
         }
     };
