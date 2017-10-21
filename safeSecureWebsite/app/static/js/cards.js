@@ -1,120 +1,57 @@
 /**
  * Created by Joshua on 7/10/2017.
  */
+var level = 4;
 function generateCards() {
     var card_start = `<div class="row">`;
-    var cards = [medicationAlert("Take Medication"),
-        shoppingList("Milk", "Bread", "Vegemite"),
-        weather(),
-        "</div><div><div class=\"row\">",
-        houseStatus("Check Fridge Door", "Fridge Door Open", "fridge"),
-        houseStatus("Check Oven", "Oven Door Open", "oven"),
-        houseStatus("Check Main Bedroom", "Bedroom Window Open", "bedroom1"),
-        houseStatus("Check Spare Bedroom", "Bedroom Window Open", "bedroom2"),
-        contact("Doctor", "98456235", "local_hospital","Somewhere"),
-        contact("Son", "12345678", "contacts","Timbucktoo"),
-        contact("Daughter", "12345678", "contacts","Whoop Whoop"),
-        contact("Emergency", "000", "local_hospital")];
+    var cards = [medicationAlert("Take Medication") +
+        shoppingList("Milk", "Bread", "Vegemite") +
+        temperature("Bedroom 1", Bedrooms.temperature) +
+        weather() + "</div><div class=\"row\">" +
+        houseStatus("Check Fridge Door", "Fridge Door Open", "fridge") +
+        houseStatus("Check Oven", "Oven Door Open", "oven") +
+        houseStatus("Check Main Bedroom", "Bedroom Window Open", "bedroom1") +
+        houseStatus("Check Spare Bedroom", "Bedroom Window Open", "bedroom2")];
 
-    if(Front_Area.di_state1)
+    if (level > 1)
     {
-        cards.append(houseStatus("Check Fridge Door", "Fridge Door Open", "fridge"));
+
     }
-    if(Front_Area.di_state1)
+    if (level > 2)
     {
-        cards.append(houseStatus("Check Oven", "Oven Door Open", "oven"));
+        cards = cards + contact("Son", "12345678", "contacts");
+        cards = cards + contact("Daughter", "12345678", "contacts");
+    }
+    if (level > 3)
+    {
+        cards = cards + contact("Doctor", "98456235", "local_hospital","Somewhere");
+        cards = cards + contact("Emergency", "000", "local_hospital");
+/*
+        if(Front_Area.di_state1)
+        {
+            cards = cards + houseStatus("Check Fridge Door", "Fridge Door Open", "fridge");
+        }
+        if(Front_Area.di_state1)
+        {
+            cards = cards + houseStatus("Check Oven", "Oven Door Open", "oven");
+        }
+
+        if(Bedrooms.di_state1)
+        {
+            cards = cards + houseStatus("Check Main Bedroom", "Bedroom Window Open", "bedroom1");
+        }
+        if(Bedrooms.di_state2)
+        {
+            cards = cards + houseStatus("Check Spare Bedroom", "Bedroom Window Open", "bedroom2");
+        }*/
+    }
+    if (level > 4)
+    {
     }
 
-    if(Bedrooms.di_state1)
-    {
-        cards.append(houseStatus("Check Main Bedroom", "Bedroom Window Open", "bedroom1"));
-    }
-    if(Bedrooms.di_state2)
-    {
-        cards.append(houseStatus("Check Spare Bedroom", "Bedroom Window Open", "bedroom2"));
-    }
-    cards.append
     var card_end = "</div>" + "</div>";
-    /*return `<div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="orange">
-                                    <i class="material-icons">content_copy</i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">Used Space</p>
-                                    <h3 class="title">49/50
-                                        <small>GB</small>
-                                    </h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons text-danger">warning</i>
-                                        <a href="#pablo">Get More Space...</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="green">
-                                    <i class="material-icons">store</i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">Revenue</p>
-                                    <h3 class="title">$34,245</h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">date_range</i> Last 24 Hours
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="red">
-                                    <i class="material-icons">info_outline</i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">Fixed Issues</p>
-                                    <h3 class="title">75</h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">local_offer</i> Tracked from Github
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="card card-stats">
-                                <div class="card-header" data-background-color="blue">
-                                    <i class="fa fa-twitter"></i>
-                                </div>
-                                <div class="card-content">
-                                    <p class="category">Followers</p>
-                                    <h3 class="title">+245</h3>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="stats">
-                                        <i class="material-icons">update</i> Just Updated
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>`;*/
     return card_start + cards + card_end;
 }
-             /*,
-             contact("Emergency Services", "000", "local_hospital", "Northfields Avenue, Keiraville"),
-             contact("Doctor", "98456235", "local_hospital","Somewhere"),
-             contact("Son", "12345678", "contacts","Timbucktoo"),
-             contact("Daughter", "12345678", "contacts","Whoop Whoop")]
-    print("Length of cards ", len(cards))
-    return cards
-}
-*/
 
 function reminderCard(message) {
     return `
@@ -174,7 +111,21 @@ function shoppingList(message1, message2, message3, id) {
         </div>
     </div>`;
 }
-
+function temperature(room,temperature) {
+    return `
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div id="` + room + `" class="card card-stats">
+            <div class="card-header" data-background-color= "blue">
+                <i class="material-icons">brightness_high</i>
+            </div>
+            <div class="card-content">
+                <p class="category">Temperature</p>
+                <h3 class="title">` + room + `</h3>
+                <h3 class="title">` + temperature + `</h3>
+            </div>
+        </div>
+    </div>`;
+}
 
 function weather() {
     return `
@@ -237,7 +188,7 @@ function medicationAlert(message) {
     }
 
 
-function contact(title, number, icon, address) {
+function contact(title, number, icon) {
     return `
     <div class="col-lg-3 col-md-6 col-sm-6">
         <div id="contact" class="card card-stats">
@@ -254,7 +205,6 @@ function contact(title, number, icon, address) {
     }
 
 $(document).ready(function() {
-    //console.log(generateCards());
-    document.getElementById("cards").innerHTML = generateCards();
+    setInterval(function(){document.getElementById("cards").innerHTML = generateCards(); console.log("Generating Homepage");}, 600);
 
 });

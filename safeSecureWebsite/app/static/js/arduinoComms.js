@@ -8,10 +8,10 @@ class Node {
         this.do_state = [0, 0, 0, 0];
         this.do_str = ["&DO01=0", "&DO02=0", "&DO03=1", "&DO04=1"];
         this.ai_state = [0, 0, 0, 0];
-        this.pwm1_colour = "Purple";
-        this.pwm2_colour = "Purple";
-        this.pwm3_colour = "Purple";
-        this.temperature = 0;
+        this.pwm01 = "0";
+        this.pwm02 = "0";
+        this.pwm03 = "0";
+        this.temperature = 22;
         this.humidity = 0;
         this.url = "";
         console.log(this.roomId);
@@ -69,22 +69,22 @@ class Node {
         this.di_state[3] = state;
     }
     get pwm01() {
-        return this.pwm1_colour;
+        return this.pwm1;
     }
     set pwm01(colour) {
-        this.pwm1_colour = colour;
+        this.pwm1 = colour;
     }
     get pwm02() {
-        return this.pwm1_colour;
+        return this.pwm2;
     }
     set pwm02(colour) {
-        this.pwm1_colour = colour;
+        this.pwm2 = colour;
     }
     get pwm03() {
-        return this.pwm3_colour;
+        return this.pwm3;
     }
     set pwm03(colour) {
-        this.pwm3_colour = colour;
+        this.pwm3 = colour;
     }
     get ai_state1() {
         return this.ai_state[0];
@@ -205,7 +205,7 @@ class Node {
         };
         // send HTTP GET request with LEDs to switch on/off if any
         //this.reflectInputs();
-        this.url = "http://" + this.ip + "/ajax_inputs" + this.do_str[0] + this.do_str[1] + this.do_str[2] + this.do_str[3] + "&PWM01=" + this.pwm1_colour+"=1" + "&PWM02=" + this.pwm2_colour+"=1"+ "&PWM03=" + this.pwm3_colour+"=1";
+        this.url = "http://" + this.ip + "/ajax_inputs" + this.do_str[0] + this.do_str[1] + this.do_str[2] + this.do_str[3] + "&PWM01=" + this.pwm01 + "&PWM02=" + this.pwm02 + "&PWM03=" + this.pwm03;
         console.log(this.url);
         request.open("GET", this.url, true);
         request.send(null);
@@ -241,9 +241,9 @@ class Node {
 if (typeof autoLighting === 'undefined') {
     var autoLighting = true;
 }
-var Bedrooms = new Node("Bedrooms", "192.168.0.98");
-var Common_Area = new Node("Common_Area","192.168.0.99");
-var Front_Area = new Node("Front_Area","192.168.0.100");
+var Bedrooms = new Node("Bedrooms", "192.168.0.99");
+//var Common_Area = new Node("Common_Area","192.168.0.99");
+//var Front_Area = new Node("Front_Area","192.168.0.100");
 var n = 0;
 function setup()
 {
@@ -255,10 +255,10 @@ function loop() {
         Bedrooms.GetArduinoIO();
         BedroomsLoop(autoLighting);
         //Bedrooms.reflectInputs();
-        Common_Area.GetArduinoIO();
-        CommonAreasLoop(autoLighting);
+        //Common_Area.GetArduinoIO();
+        //CommonAreasLoop(autoLighting);
         //Common_Area.reflectInputs();
-        Front_Area.GetArduinoIO();
+        //Front_Area.GetArduinoIO();
         //Front_Area.reflectInputs();
         console.log("Loop");
         n = 0;

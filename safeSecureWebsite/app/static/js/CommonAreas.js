@@ -42,28 +42,56 @@ function CommonAreasLoop(autoLighting) {
         Balcony_DoorOpenFunc();
     }
     else {
-        Balcony_DoorCloseFunc();
+        try {
+            Balcony_DoorCloseFunc();
+        }
+        catch(e)
+        {}
     }
     //Do_State_2 - Bathroom Door Status
     if (Common_Area.do_state2) {
+        try {
         Bathroom_DoorOpenFunc();
+        }
+        catch(e)
+        {}
     }
     else {
+        try {
         Bathroom_DoorCloseFunc();
+        }
+        catch(e)
+        {}
     }
     //Do_State_3 - Living Room PIR Status
     if (Common_Area.do_state3) {
+        try {
         Living_RoomPersonEnterRoomFunc();
+        }
+        catch(e)
+        {}
     }
     else {
+        try {
         Living_RoomPersonLeaveRoomFunc();
+        }
+        catch(e)
+        {}
     }
     //DO_State_4 - Porch PIR Status
     if (Common_Area.do_state4) {
+        try {
         PorchPersonEnterRoomFunc();
+        }
+        catch(e)
+        {}
     }
     else {
+        try {
         PorchPersonLeaveRoomFunc();
+        }
+        catch(e)
+        {}
     }
 
 }

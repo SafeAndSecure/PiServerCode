@@ -4,8 +4,8 @@
 var lastInput = 0;
 function takeMedication() {
     console.log("Reminder to take medication");
-    responsiveVoice.speak("Please Take Your Medication");
-    setInterval(takeMedication, 20000);
+    responsiveVoice.speak("Please Take Your Medication", "UK English Male");
+    setInterval(takeMedication, 5000);
 }
 
 function statusCheck() {
@@ -28,14 +28,14 @@ window.addEventListener('load', function(){ // on page load
 
 }, false)
 
-//takeMedication()
+//takeMedication();
 function mainLoop() {
-    console.log(lastInput);
+    //console.log(lastInput);
 
-    if (lastInput > 300)
+    if (lastInput > 1000)
     {
         lastInput = 0;
-        statusCheck();
+        //statusCheck();
     }
     lastInput++;
     requestAnimationFrame(mainLoop);

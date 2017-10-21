@@ -72,9 +72,12 @@ function Front_DoorCloseFunc(){
     Front_DoorClose.beginElement();
 }
 function Bed1_DoorOpenFunc(){
+
+    console.log("bedroom 1 door open fucntion being called");
     Bed1_DoorOpen.beginElement();
 }
 function Bed1_DoorCloseFunc(){
+    console.log("bedroom 1 door close fucntion being called");
     Bed1_DoorClose.beginElement();
 }
 function Bed2_DoorOpenFunc(){
@@ -102,10 +105,10 @@ function Bed2_DoorAlarmOffFunc(){
     Bed2_DoorAlarmOff.beginElement();
 }
 function Bed1_DoorAlarmOnFunc(){
-    Bed1_DoorAlarmOn.beginElement();
+    //Bed1_DoorAlarmOn.beginElement();
 }
 function Bed1_DoorAlarmOffFunc(){
-    Bed1_DoorAlarmOff.beginElement();
+    //Bed1_DoorAlarmOff.beginElement();
 }
 function Bathroom_DoorAlarmOnFunc(){
     Bathroom_DoorAlarmOn.beginElement();
@@ -132,14 +135,19 @@ var floorplan = document.getElementById("floorplan");
 var bedroom1 = floorplan.getElementById("Bed1");
 bedroom1.addEventListener("mousedown", function () {
     //responsiveVoice.speak("Bedroom 1");
-    Common_Area.toggleDO1();
-    Common_Area.pwm01 = "Green";
+    if (Bedrooms.pwm02 == "1") {
+        Bedrooms.pwm02 = "0";
+    }
+    Bedrooms.pwm02 = "1";
+
+    //Common_Area.toggleDO1();
+    //Common_Area.pwm01 = "1";
 }, false);
 var bedroom2 = floorplan.getElementById("Bed2");
 bedroom2.addEventListener("mousedown", function () {
     //responsiveVoice.speak("Bedroom 2");
     Common_Area.toggleDO4();
-    Common_Area.pwm01 = "Purple";
+    Common_Area.pwm01 = "0";
 }, false);
 var livingRoom = floorplan.getElementById("Living_Room");
 livingRoom.addEventListener("mousedown", function () {
