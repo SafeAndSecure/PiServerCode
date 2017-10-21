@@ -2,7 +2,7 @@ from flask import render_template
 from app import app
 from app import cards
 
-careLevel = 2 # Default Care Level
+careLevel = 4 # Default Care Level
 
 @app.route('/')
 @app.route('/index')

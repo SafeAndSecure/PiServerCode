@@ -16,18 +16,7 @@ function Bed2PersonEnterRoomFunc(){
 function Bed2PersonLeaveRoomFunc(){
     Bed2PersonLeaveRoom.beginElement();
 }
-function Bed3PersonEnterRoomFunc(){
-    Bed1PersonEnterRoom.beginElement();
-}
-function Bed3PersonLeaveRoomFunc(){
-    Bed1PersonLeaveRoom.beginElement();
-}
-function Bed4PersonEnterRoomFunc(){
-    Bed1PersonEnterRoom.beginElement();
-}
-function Bed4PersonLeaveRoomFunc(){
-    Bed1PersonLeaveRoom.beginElement();
-}
+
 function BathroomPersonEnterRoomFunc(){
     BathroomPersonEnterRoom.beginElement();
 }
@@ -61,9 +50,11 @@ function BalconyPersonLeaveRoomFunc(){
 
 function Living_RoomPersonEnterRoomFunc(){
     Living_RoomPersonEnterRoom.beginElement();
+    KitchenPersonEnterRoom.beginElement();
 }
 function Living_RoomPersonLeaveRoomFunc(){
     Living_RoomPersonLeaveRoom.beginElement();
+    KitchenPersonLeavesRoom.beginElement();
 }
 function Front_DoorOpenFunc(){
     Front_DoorOpen.beginElement();
@@ -73,11 +64,11 @@ function Front_DoorCloseFunc(){
 }
 function Bed1_DoorOpenFunc(){
 
-    console.log("bedroom 1 door open fucntion being called");
+    console.log("bedroom 1 door open function being called");
     Bed1_DoorOpen.beginElement();
 }
 function Bed1_DoorCloseFunc(){
-    console.log("bedroom 1 door close fucntion being called");
+    console.log("bedroom 1 door close function being called");
     Bed1_DoorClose.beginElement();
 }
 function Bed2_DoorOpenFunc(){
@@ -128,7 +119,7 @@ function Balcony_DoorAlarmOnFunc(){
 function Balcony_DoorAlarmOffFunc(){
     Balcony_DoorAlarmOff.beginElement();
 }
-
+/*
 $( document ).ready(function() {
 var floorplan = document.getElementById("floorplan");
 
@@ -165,3 +156,4 @@ laundry.addEventListener("mousedown", function () {
     Common_Area.toggleDO4;
 }, false);
 });
+*/

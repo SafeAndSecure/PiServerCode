@@ -11,7 +11,7 @@ function takeMedication() {
 function statusCheck() {
 
     console.log("Check if person is ok");
-    responsiveVoice.speak("No input detected. Are you ok", "UK English Male");
+    //responsiveVoice.speak("No input detected. Are you ok", "UK English Male");
 }
 
 window.addEventListener('load', function(){ // on page load

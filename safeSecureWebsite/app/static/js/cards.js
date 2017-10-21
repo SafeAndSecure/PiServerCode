@@ -26,7 +26,7 @@ function generateCards() {
     {
         cards = cards + contact("Doctor", "98456235", "local_hospital","Somewhere");
         cards = cards + contact("Emergency", "000", "local_hospital");
-/*
+
         if(Front_Area.di_state1)
         {
             cards = cards + houseStatus("Check Fridge Door", "Fridge Door Open", "fridge");
@@ -43,10 +43,11 @@ function generateCards() {
         if(Bedrooms.di_state2)
         {
             cards = cards + houseStatus("Check Spare Bedroom", "Bedroom Window Open", "bedroom2");
-        }*/
+        }
     }
     if (level > 4)
     {
+        cards = cards + reminderCard("Test")
     }
 
     var card_end = "</div>" + "</div>";
@@ -190,21 +191,26 @@ function medicationAlert(message) {
 
 function contact(title, number, icon) {
     return `
+<a class="fancybox-thumb" rel="fancybox-thumb" href="http://farm6.staticflickr.com/5444/17679973232_568353a624_b.jpg" title="Golden Manarola (Sanjeev Deo)">
     <div class="col-lg-3 col-md-6 col-sm-6">
-        <div id="contact" class="card card-stats">
+        <div id="contact" class="card card-stats" data-toggle="modal" data-target="#exampleModal">
             <div class="card-header" data-background-color="purple">
                 <i class="material-icons">` + icon + `</i>
             </div>
             <div class="card-content">
                 <p class="category">Contacts</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Launch demo modal
+                </button>
                 <h3 class="title">` + title + `</h3>
                 <h3 class="title">` + number + `</h3>
             </div>
         </div>
-    </div>`;
+    </div></a>`
+   ;
     }
 
 $(document).ready(function() {
-    setInterval(function(){document.getElementById("cards").innerHTML = generateCards(); console.log("Generating Homepage");}, 600);
+    setInterval(function(){document.getElementById("cards").innerHTML = generateCards(); /*console.log("Generating Homepage");*/}, 600);
 
 });

@@ -6,15 +6,39 @@ class Node {
         this.ip = ip;
         this.di_state = [0, 0, 0, 0];
         this.do_state = [0, 0, 0, 0];
+        this.pwm_state = [0, 0, 0];
+        this.pwm_str = ["&PWM01=0", "&PWM02=0", "&PWM03=1"];
         this.do_str = ["&DO01=0", "&DO02=0", "&DO03=1", "&DO04=1"];
         this.ai_state = [0, 0, 0, 0];
-        this.pwm01 = "0";
-        this.pwm02 = "0";
-        this.pwm03 = "0";
+        /*this.pwm1 = "1";
+        this.pwm2 = "1";
+        this.pwm3 = "1";*/
         this.temperature = 22;
         this.humidity = 0;
         this.url = "";
         console.log(this.roomId);
+    }
+    get pwm_state1() {
+        return this.pwm_state[0];
+    }
+    get pwm_state2() {
+        return this.pwm_state[1];
+    }
+    get pwm_state3() {
+        return this.pwm_state[2];
+    }
+    set pwm_state1(state) {
+        console.log("Setting PWM 1");
+        this.pwm_state[0] = state;
+        this.pwm_str[0] = "&PWM01" + "=" + state;
+    }
+    set pwm_state2(state) {
+        this.pwm_state[1] = state;
+        this.pwm_str[1] = "&PWM02"  + "=" + state;
+    }
+    set pwm_state3(state) {
+        this.pwm_state[2] = state;
+        this.pwm_str[2] = "&PWM03" + "=" + state;
     }
     get do_state1() {
         return this.do_state[0];
@@ -68,24 +92,6 @@ class Node {
     set di_state4(state) {
         this.di_state[3] = state;
     }
-    get pwm01() {
-        return this.pwm1;
-    }
-    set pwm01(colour) {
-        this.pwm1 = colour;
-    }
-    get pwm02() {
-        return this.pwm2;
-    }
-    set pwm02(colour) {
-        this.pwm2 = colour;
-    }
-    get pwm03() {
-        return this.pwm3;
-    }
-    set pwm03(colour) {
-        this.pwm3 = colour;
-    }
     get ai_state1() {
         return this.ai_state[0];
     }
@@ -109,6 +115,33 @@ class Node {
     }
     set ai_state4(state) {
         this.ai_state[3] = state;
+    }
+    togglePWM1() {
+        console.log("Toggling PWM 1");
+        if(this.pwm_state1){
+            this.pwm_state1 = 0;
+        }
+        else {
+            this.pwm_state1 = 1;
+        }
+    }
+    togglePWM2() {
+        console.log("Toggling PWM 2");
+        if(this.pwm_state2){
+            this.pwm_state2 = 0;
+        }
+        else {
+            this.pwm_state2 = 1;
+        }
+    }
+    togglePWM3(){
+        console.log("Toggling PWM 3");
+        if(this.pwm_state3){
+            this.pwm_state3 = 0;
+        }
+        else {
+            this.pwm_state3 = 1;
+        }
     }
     toggleDO1() {
         console.log("Toggling pin 1");
@@ -205,7 +238,7 @@ class Node {
         };
         // send HTTP GET request with LEDs to switch on/off if any
         //this.reflectInputs();
-        this.url = "http://" + this.ip + "/ajax_inputs" + this.do_str[0] + this.do_str[1] + this.do_str[2] + this.do_str[3] + "&PWM01=" + this.pwm01 + "&PWM02=" + this.pwm02 + "&PWM03=" + this.pwm03;
+        this.url = "http://" + this.ip + "/ajax_inputs" + this.do_str[0] + this.do_str[1] + this.do_str[2] + this.do_str[3] + this.pwm_str[0] + this.pwm_str[1] + this.pwm_str[2];
         console.log(this.url);
         request.open("GET", this.url, true);
         request.send(null);
@@ -241,26 +274,29 @@ class Node {
 if (typeof autoLighting === 'undefined') {
     var autoLighting = true;
 }
-var Bedrooms = new Node("Bedrooms", "192.168.0.99");
-//var Common_Area = new Node("Common_Area","192.168.0.99");
-//var Front_Area = new Node("Front_Area","192.168.0.100");
+var Bedrooms = new Node("Bedrooms","192.168.0.98");
+var Common_Area = new Node("Common_Area","192.168.0.99");
+var Front_Area = new Node("Front_Area","192.168.0.100");
 var n = 0;
 function setup()
 {
 }
 function loop() {
     n++;
-    //console.log(n);
-    if (n>60) { // loop is called 60 times a second
+    if (n>100) { // loop is called 60 times a second
+    console.log(n);
         Bedrooms.GetArduinoIO();
         BedroomsLoop(autoLighting);
         //Bedrooms.reflectInputs();
+
         //Common_Area.GetArduinoIO();
-        //CommonAreasLoop(autoLighting);
+        CommonAreasLoop(autoLighting);
         //Common_Area.reflectInputs();
+
         //Front_Area.GetArduinoIO();
+        FrontAreasLoop(autoLighting);
         //Front_Area.reflectInputs();
-        console.log("Loop");
+        //console.log("Loop");
         n = 0;
         }
 
